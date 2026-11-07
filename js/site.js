@@ -299,6 +299,7 @@ function setupTools() {
       musicBtn.setAttribute("aria-pressed", "true");
     };
     let pausedForSpeech = false;
+    let cancelWaiting = null;
     const musicOff = remember => {
       pausedForSpeech = false;
       audio.pause();
@@ -307,7 +308,13 @@ function setupTools() {
       if (remember) store("bk-music", "off");
     };
     music.pause = () => {
-      if (audio.paused) return;
+      if (audio.paused) {
+        if (cancelWaiting) {
+          cancelWaiting();
+          pausedForSpeech = true;
+        }
+        return;
+      }
       pausedForSpeech = true;
       audio.pause();
       musicBtn.textContent = "🎵 Music: paused";
@@ -338,8 +345,13 @@ function setupTools() {
       audio.play().then(showOn).catch(() => {
         const start = e => {
           if (e.target.closest && e.target.closest("#toggle-music, video")) return;
-          ["pointerdown", "keydown"].forEach(t => document.removeEventListener(t, start, true));
+          if ([...document.querySelectorAll("video")].some(v => !v.paused)) return;
+          cancelWaiting();
           if (audio.paused && store("bk-music") !== "off") audio.play().then(showOn).catch(() => {});
+        };
+        cancelWaiting = () => {
+          ["pointerdown", "keydown"].forEach(t => document.removeEventListener(t, start, true));
+          cancelWaiting = null;
         };
         ["pointerdown", "keydown"].forEach(t => document.addEventListener(t, start, true));
       });
