@@ -29,11 +29,11 @@ const SITE = {
   musicAutoplay: true,
 
   music: {
-    default:       "audio/soldiers-joy-medley-1921.mp3",
-    home:          "audio/john-browns-body-1902.mp3",
-    pottawatomie:  "audio/john-browns-body-1902.mp3",
-    lawrence:      "audio/auld-lang-syne-marine-band.mp3",
-    constitutions: "audio/auld-lang-syne-marine-band.mp3",
+    default:       "audio/john_brown_body.mp3",
+    home:          "audio/john_brown_body.mp3",
+    pottawatomie:  "audio/soldier_of_cross.mp3",
+    lawrence:      "audio/kansas_emigrant_song.mp3",
+    constitutions: "audio/kansas_emigrant_song.mp3",
   },
 
   commentsUrl: "https://script.google.com/macros/s/AKfycbypTWbelwiP1XjFCiQK79KqBI_MNC56x_6d6y6ACbdzO-8yXi2uxslRucf93sbGsn5DLA/exec",
