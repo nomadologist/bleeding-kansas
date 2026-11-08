@@ -797,10 +797,21 @@ function setupMovieMode() {
   document.body.append(dim);
   const video = frame.querySelector("video");
 
+  const place = () => {
+    if (!document.body.classList.contains("movie-mode")) return;
+    const r = frame.getBoundingClientRect();
+    const above = r.top - btn.offsetHeight - 8;
+    btn.style.top = (above >= 8 ? above : r.bottom + 8) + "px";
+    btn.style.left = Math.max(8, r.right - btn.offsetWidth) + "px";
+    requestAnimationFrame(place);
+  };
+
   const set = on => {
     document.body.classList.toggle("movie-mode", on);
     btn.setAttribute("aria-pressed", on);
     btn.textContent = on ? "💡 Lights on" : "🎬 Movie mode";
+    btn.style.top = btn.style.left = "";
+    if (on) requestAnimationFrame(place);
     if (on) {
       const r = frame.getBoundingClientRect();
       const scale = Math.min(1.6, (innerWidth - 32) / r.width, (innerHeight - 32) / r.height);
