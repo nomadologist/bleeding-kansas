@@ -788,8 +788,6 @@ function setupComments() {
     const p = `cb${++uid}`;
     const periods = SITE.periods.map(n => `<option value="${n}">Period ${n}</option>`).join("");
     el.innerHTML = `
-      <p class="cb-count" hidden></p>
-      <div class="cb-posts" tabindex="0" role="region" aria-label="Posts" aria-live="polite"><p class="cb-empty">Loading posts…</p></div>
       <form class="cb-form" novalidate>
         <h3 class="cb-form-title">✍️ Add your voice</h3>
         <p class="cb-replying" hidden>↪ Replying to <strong></strong>
@@ -804,7 +802,9 @@ function setupComments() {
         <p class="cb-note">🔒 Only your first name and last initial are shown publicly. Posts appear after Mr. Booth approves them.</p>
         <button type="submit" class="btn">📨 Post</button>
         <p class="cb-status" role="status"></p>
-      </form>`;
+      </form>
+      <p class="cb-count" hidden></p>
+      <div class="cb-posts" tabindex="0" role="region" aria-label="Posts" aria-live="polite"><p class="cb-empty">Loading posts…</p></div>`;
 
     const postsEl = el.querySelector(".cb-posts");
     const form = el.querySelector(".cb-form");

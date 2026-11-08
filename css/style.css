@@ -602,7 +602,7 @@ mark.hl { color: inherit; padding: 0; border-radius: 2px; }
   padding: .75rem;
   margin: 1rem 0 2rem;
 }
-.cb-posts { margin-bottom: 1rem; max-height: 32rem; overflow-y: auto; padding-right: .25rem; }
+.cb-posts { max-height: 32rem; overflow-y: auto; padding-right: .25rem; }
 .cb-count { margin: 0 0 .4rem; font-size: .85rem; font-weight: bold; color: var(--muted); }
 .cb-empty { font-style: italic; color: var(--muted); margin: .25rem 0; }
 .cb-post {
@@ -626,6 +626,7 @@ mark.hl { color: inherit; padding: 0; border-radius: 2px; }
   background: #fffdf5;
   border: 2px outset #d8c597;
   padding: .75rem 1rem;
+  margin-bottom: 1rem;
 }
 .cb-form-title { margin: 0 0 .5rem; }
 .cb-form label { display: block; font-weight: bold; font-size: .85rem; margin-bottom: .5rem; }
