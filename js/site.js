@@ -801,7 +801,12 @@ function setupMovieMode() {
     document.body.classList.toggle("movie-mode", on);
     btn.setAttribute("aria-pressed", on);
     btn.textContent = on ? "💡 Lights on" : "🎬 Movie mode";
-    if (on) frame.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (on) {
+      const r = frame.getBoundingClientRect();
+      const scale = Math.min(1.6, (innerWidth - 32) / r.width, (innerHeight - 32) / r.height);
+      frame.style.setProperty("--movie-scale", Math.max(1, scale));
+      frame.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
   };
 
   btn.addEventListener("click", () => set(!document.body.classList.contains("movie-mode")));

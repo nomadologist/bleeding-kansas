@@ -297,8 +297,9 @@ figcaption { font-size: .85rem; color: var(--muted); font-style: italic; margin-
 .movie-btn { position: relative; }
 .movie-dim { position: fixed; inset: 0; z-index: 1000; background: rgba(0, 0, 0, .88); opacity: 0; pointer-events: none; transition: opacity .4s; }
 body.movie-mode .movie-dim { opacity: 1; pointer-events: auto; }
-body.movie-mode .video-frame, body.movie-mode .movie-btn { z-index: 1001; }
-body.movie-mode .video-frame { box-shadow: 0 0 40px rgba(0, 0, 0, .9); }
+.video-frame { transition: transform .4s; }
+body.movie-mode .video-frame { z-index: 1001; transform: scale(var(--movie-scale, 1.6)); box-shadow: 0 0 40px rgba(0, 0, 0, .9); }
+body.movie-mode .movie-btn { z-index: 1002; }
 body.movie-mode .movie-btn { background: #fff8e6; }
 
 details {
