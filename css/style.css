@@ -398,7 +398,6 @@ details > div { padding: .75rem 1rem; }
   display: flex; justify-content: space-between; align-items: flex-end; gap: .5rem; flex-wrap: wrap;
   margin-top: 2rem; padding: 1rem 0 9px; border-top: 3px double var(--border);
 }
-.journey-next > .btn { align-self: center; margin-bottom: 1rem; }
 .journey-next::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 9px;
   background:
@@ -406,11 +405,21 @@ details > div { padding: .75rem 1rem; }
     repeating-linear-gradient(90deg, #8b6b3d 0 7px, transparent 7px 18px) bottom / 100% 6px no-repeat;
 }
 .train-link {
-  display: inline-flex; align-items: flex-end; margin-left: auto;
+  display: inline-flex; align-items: flex-end;
   text-decoration: none; transition: transform .6s ease-in-out;
 }
 .train-link:hover, .train-link:focus-visible { transform: translateX(8px); }
+.train-back:hover, .train-back:focus-visible { transform: translateX(-8px); }
 .train-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.train-back .train-engine svg { transform: scaleX(-1); }
+.train-back .train-car { margin: 0 0 15px 2px; }
+.train-back .train-car::after { right: auto; left: -8px; }
+.train-back .smoke { left: 26px; }
+.train-back .smoke i { animation-name: puff-back !important; }
+@keyframes puff-back {
+  0% { opacity: .8; transform: translate(0, 0) scale(.6); }
+  100% { opacity: 0; transform: translate(-14px, -22px) scale(1.8); }
+}
 .train-car {
   position: relative; display: flex; flex-direction: column; align-items: center;
   margin: 0 2px 15px 0; padding: .35rem .9rem .45rem;

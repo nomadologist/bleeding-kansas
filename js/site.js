@@ -170,38 +170,26 @@ function buildJourney() {
   const nav = document.createElement("nav");
   nav.className = "journey-next";
   nav.setAttribute("aria-label", "Continue the story");
+  const engine = `<span class="train-engine" aria-hidden="true">
+      <span class="smoke"><i></i><i></i><i></i></span>
+      <svg viewBox="0 0 96 56" width="120" height="70">
+        <rect x="4" y="10" width="24" height="31" fill="#7a1f1f" stroke="#2b1d0e" stroke-width="2"/>
+        <rect x="10" y="16" width="12" height="10" fill="#f3d98b"/>
+        <rect x="28" y="20" width="46" height="21" rx="3" fill="#2b1d0e"/>
+        <polygon points="62,20 64,9 59,3 74,3 69,9 71,20" fill="#2b1d0e"/>
+        <polygon points="74,41 74,47 93,47" fill="#7a1f1f" stroke="#2b1d0e" stroke-width="1.5"/>
+        <circle cx="18" cy="44" r="9" fill="#c8962e" stroke="#2b1d0e" stroke-width="2.5"/>
+        <circle cx="40" cy="44" r="9" fill="#c8962e" stroke="#2b1d0e" stroke-width="2.5"/>
+        <circle cx="62" cy="47" r="6" fill="#c8962e" stroke="#2b1d0e" stroke-width="2.5"/>
+      </svg>
+    </span>`;
+  const car = (kicker, label) => `<span class="train-car">
+      <span class="train-kicker">${kicker}</span>
+      <span class="train-dest">${label}</span>
+    </span>`;
   nav.innerHTML =
-    (prev ? `<a class="btn" href="${prev.href}">← ${prev.label}</a>` : "<span></span>") +
-    (next ? `<a class="train-link" href="${next.href}">
-      <span class="train-car">
-        <span class="train-kicker">Next stop</span>
-        <span class="train-dest">${next.label} →</span>
-      </span>
-      <span class="train-engine" aria-hidden="true">
-        <span class="smoke"><i></i><i></i><i></i></span>
-        <svg viewBox="0 0 96 56" width="120" height="70">
-          <rect x="1" y="6" width="31" height="6" fill="#2b1d0e"/>
-          <rect x="4" y="11" width="24" height="30" fill="#7a1f1f" stroke="#2b1d0e" stroke-width="2"/>
-          <rect x="10" y="16" width="12" height="10" fill="#f3d98b" stroke="#2b1d0e"/>
-          <rect x="28" y="20" width="46" height="20" rx="3" fill="#2b1d0e"/>
-          <rect x="40" y="20" width="3" height="20" fill="#c8962e"/>
-          <rect x="58" y="20" width="3" height="20" fill="#c8962e"/>
-          <rect x="44" y="14" width="9" height="7" rx="3" fill="#2b1d0e"/>
-          <polygon points="62,20 64,9 59,3 74,3 69,9 71,20" fill="#2b1d0e"/>
-          <rect x="74" y="15" width="7" height="7" fill="#c8962e" stroke="#2b1d0e"/>
-          <rect x="74" y="24" width="4" height="16" fill="#2b1d0e"/>
-          <polygon points="74,40 74,47 93,47" fill="#7a1f1f" stroke="#2b1d0e" stroke-width="1.5"/>
-          <rect x="2" y="39" width="74" height="4" fill="#2b1d0e"/>
-          <circle cx="18" cy="44" r="9" fill="#c8962e" stroke="#2b1d0e" stroke-width="2"/>
-          <circle cx="40" cy="44" r="9" fill="#c8962e" stroke="#2b1d0e" stroke-width="2"/>
-          <circle cx="62" cy="47" r="6" fill="#c8962e" stroke="#2b1d0e" stroke-width="2"/>
-          <circle cx="18" cy="44" r="2" fill="#2b1d0e"/>
-          <circle cx="40" cy="44" r="2" fill="#2b1d0e"/>
-          <circle cx="62" cy="47" r="1.5" fill="#2b1d0e"/>
-          <line x1="18" y1="44" x2="40" y2="44" stroke="#5c4a32" stroke-width="2.5"/>
-        </svg>
-      </span>
-    </a>` : "");
+    (prev ? `<a class="train-link train-back" href="${prev.href}">${engine}${car("Previous stop", "← " + prev.label)}</a>` : "<span></span>") +
+    (next ? `<a class="train-link" href="${next.href}">${car("Next stop", next.label + " →")}${engine}</a>` : "");
   main.append(nav);
 }
 
