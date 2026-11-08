@@ -36,6 +36,12 @@ const SITE = {
     constitutions: "audio/kansas_emigrant_song.mp3",
   },
 
+  musicVolume: {
+    "audio/john_brown_body.mp3":       0.28,
+    "audio/kansas_emigrant_song.mp3":  0.28,
+    "audio/soldier_of_cross.mp3":      0.315,
+  },
+
   commentsUrl: "https://script.google.com/macros/s/AKfycbypTWbelwiP1XjFCiQK79KqBI_MNC56x_6d6y6ACbdzO-8yXi2uxslRucf93sbGsn5DLA/exec",
 
   entryLayout: "tabs",
@@ -291,9 +297,10 @@ function setupTools() {
   const musicBtn = document.getElementById("toggle-music");
   if (musicBtn) {
     const page = document.body.dataset.page;
-    const audio = new Audio(SITE.music[page] || SITE.music.default);
+    const track = SITE.music[page] || SITE.music.default;
+    const audio = new Audio(track);
     audio.loop = true;
-    audio.volume = 0.35;
+    audio.volume = SITE.musicVolume[track] ?? 0.35;
     const showOn = () => {
       musicBtn.textContent = "🎵 Music: on";
       musicBtn.setAttribute("aria-pressed", "true");
