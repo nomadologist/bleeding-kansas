@@ -112,6 +112,7 @@ function buildChrome() {
         <h2>Reading Tools</h2>
         <button type="button" class="tool-btn" id="toggle-text" aria-pressed="false">🔍 Bigger text</button>
         <button type="button" class="tool-btn" id="toggle-music" aria-pressed="false">🎵 Music: off</button>
+        <label class="volume" hidden>🔉<input type="range" id="music-volume" min="0" max="100" aria-label="Music volume"></label>
       </div>
       ${SITE.didYouKnow[page] ? `<div class="side-box side-extra">
         <h2>Did You Know?</h2>
@@ -301,6 +302,19 @@ function setupTools() {
     const audio = new Audio(track);
     audio.loop = true;
     audio.volume = SITE.musicVolume[track] ?? 0.35;
+    const saved = parseFloat(store("bk-volume"));
+    if (saved >= 0 && saved <= 1) audio.volume = saved;
+    const slider = document.getElementById("music-volume");
+    if (slider) {
+      slider.value = Math.round(audio.volume * 100);
+      slider.addEventListener("input", () => {
+        audio.volume = slider.value / 100;
+        store("bk-volume", audio.volume);
+      });
+      const showSlider = () => { slider.parentElement.hidden = audio.paused; };
+      audio.addEventListener("play", showSlider);
+      audio.addEventListener("pause", showSlider);
+    }
     const showOn = () => {
       musicBtn.textContent = "🎵 Music: on";
       musicBtn.setAttribute("aria-pressed", "true");
