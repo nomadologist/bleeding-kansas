@@ -135,10 +135,11 @@ function buildChrome() {
   if (footer) {
     footer.outerHTML = `
       <footer class="site-footer">
-        <div class="badges" aria-hidden="true">
-          <span class="badge88 b1">MADE WITH<br>HTML</span>
-          <span class="badge88 b2">FREE STATE<br>OF MIND</span>
-          <span class="badge88 b3">KANSAS<br>EST. 1861</span>
+        <div class="badges">
+          <span class="badge88 b1" aria-hidden="true">MADE WITH<br>HTML</span>
+          <span class="badge88 b2" aria-hidden="true">FREE STATE<br>OF MIND</span>
+          <span class="badge88 b3" aria-hidden="true">KANSAS<br>EST. 1861</span>
+          <span class="badge88 b4">MADE WITH ASSISTANCE<br>FROM CLAUDE CODE</span>
         </div>
         <p>&copy; ${new Date().getFullYear()} Mr. Booth &middot; 11th Grade US History &middot;
           <a href="about.html">Bibliography &amp; Credits</a></p>

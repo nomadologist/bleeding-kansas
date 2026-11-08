@@ -681,6 +681,7 @@ mark.hl { color: inherit; padding: 0; border-radius: 2px; }
 .badge88.b1 { background: linear-gradient(#3a6ea5, #1d3a6e); }
 .badge88.b2 { background: linear-gradient(#5b8f3a, #2f5d2a); }
 .badge88.b3 { background: linear-gradient(#e0b24c, #a37419); color: #000; }
+.badge88.b4 { width: 142px; background: linear-gradient(#e08a6a, #b5532f); }
 
 html.large-text { --base-size: 19px; }
 
