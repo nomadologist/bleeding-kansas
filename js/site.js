@@ -21,9 +21,9 @@ const SITE = {
   ticker: [
     "★ Welcome, historians! ★",
     "💬 Share your thoughts in the comments on each page",
-    "📅 Due 11/25: Sack of Lawrence",
-    "📅 Due 11/26: Pottawatomie Massacre",
-    "📅 Due 11/27: Three Constitutions",
+    "📅 Due 12/02: Sack of Lawrence",
+    "📅 Due 12/03: Pottawatomie Massacre",
+    "📅 Due 12/04: Three Constitutions",
   ],
 
   musicAutoplay: true,
@@ -788,6 +788,30 @@ function setupFlashcards() {
   });
 }
 
+function setupMovieMode() {
+  const btn = document.querySelector(".movie-btn");
+  const frame = document.querySelector(".video-frame");
+  if (!btn || !frame) return;
+  const dim = document.createElement("div");
+  dim.className = "movie-dim";
+  document.body.append(dim);
+  const video = frame.querySelector("video");
+
+  const set = on => {
+    document.body.classList.toggle("movie-mode", on);
+    btn.setAttribute("aria-pressed", on);
+    btn.textContent = on ? "💡 Lights on" : "🎬 Movie mode";
+    if (on) frame.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  btn.addEventListener("click", () => set(!document.body.classList.contains("movie-mode")));
+  dim.addEventListener("click", () => set(false));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") set(false);
+  });
+  if (video) video.addEventListener("ended", () => set(false));
+}
+
 function setupComments() {
   let uid = 0;
   document.querySelectorAll(".comment-board").forEach(el => {
@@ -938,4 +962,5 @@ setupFlashcards();
 setupLoadedLanguage();
 setupAnticipation();
 setupHighlighter();
+setupMovieMode();
 setupComments();

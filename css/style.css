@@ -292,6 +292,14 @@ figcaption { font-size: .85rem; color: var(--muted); font-style: italic; margin-
   background: #000; border: 4px solid #333; margin: 1rem 0;
 }
 .video-frame iframe, .video-frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.movie-head { display: flex; justify-content: space-between; align-items: center; gap: .75rem; flex-wrap: wrap; margin-top: 2rem; }
+.content .movie-head h2 { margin: 0; }
+.movie-btn { position: relative; }
+.movie-dim { position: fixed; inset: 0; z-index: 1000; background: rgba(0, 0, 0, .88); opacity: 0; pointer-events: none; transition: opacity .4s; }
+body.movie-mode .movie-dim { opacity: 1; pointer-events: auto; }
+body.movie-mode .video-frame, body.movie-mode .movie-btn { z-index: 1001; }
+body.movie-mode .video-frame { box-shadow: 0 0 40px rgba(0, 0, 0, .9); }
+body.movie-mode .movie-btn { background: #fff8e6; }
 
 details {
   background: #fffdf5;
