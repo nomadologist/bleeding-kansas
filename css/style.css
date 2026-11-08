@@ -431,7 +431,8 @@ details > div { padding: .75rem 1rem; }
 .ag-revisit { border-color: var(--gold); background: #fff7dc; }
 
 .loaded-language { margin-top: 1.5rem; padding-top: 1rem; border-top: 3px double var(--border); }
-.content .loaded-language h4 { font-size: 1.25rem; color: var(--navy); margin: 0 0 .5rem; }
+.content .loaded-language h3 { font-size: 1.25rem; color: var(--navy); margin: 0 0 .5rem; }
+.box > .loaded-language:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
 .ll-passage {
   font-family: Georgia, serif; font-size: 1.02rem; line-height: 1.9;
   background: #f6eedb; border-left: 5px solid var(--maroon);
